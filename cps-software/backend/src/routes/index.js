@@ -4,6 +4,8 @@
 // attendance...), each module's routes will get mounted here too.
 
 import { Router } from "express";
+import registrationRoutes from "../modules/registrations/registration.routes.js";
+import studentRoutes from "../modules/students/student.routes.js";
 
 const router = Router();
 
@@ -12,6 +14,9 @@ router.get("/health", (req, res) => {
   res.json({ status: "ok" });
 });
 
-// Future module routes (students, staff, fees, attendance, etc.) get added here.
+router.use("/registrations", registrationRoutes);
+router.use("/students", studentRoutes);
+
+// Future module routes (staff, fees, attendance, etc.) get added here.
 
 export default router;
