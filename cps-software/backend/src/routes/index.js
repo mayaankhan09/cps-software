@@ -7,6 +7,9 @@ import { Router } from "express";
 import registrationRoutes from "../modules/registrations/registration.routes.js";
 import studentRoutes from "../modules/students/student.routes.js";
 import staffRoutes from "../modules/staff/staff.routes.js";
+import feeStructureRoutes from "../modules/feeStructures/feeStructure.routes.js";
+import feeDueRoutes from "../modules/feeDues/feeDue.routes.js";
+import paymentRoutes from "../modules/payments/payment.routes.js";
 
 const router = Router();
 
@@ -18,7 +21,10 @@ router.get("/health", (req, res) => {
 router.use("/registrations", registrationRoutes);
 router.use("/students", studentRoutes);
 router.use("/staff", staffRoutes);
+router.use("/fee-structures", feeStructureRoutes);
+router.use("/fee-dues", feeDueRoutes);
+router.use("/payments", paymentRoutes);
 
-// Future module routes (fees, attendance, etc.) get added here.
+// Future module routes (attendance, etc.) get added here.
 
 export default router;

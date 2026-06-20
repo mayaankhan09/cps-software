@@ -110,3 +110,15 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/* Printing a receipt (see fees/Receipt.jsx) should only print the receipt
+   itself — not the page title/nav around it, and not buttons like "Print"
+   or "Reverse Payment" that only make sense on screen. Anything marked
+   "no-print", plus the layout's own title/nav ("app-chrome"), is hidden
+   only when actually printing. */
+@media print {
+  .app-chrome,
+  .no-print {
+    display: none !important;
+  }
+}

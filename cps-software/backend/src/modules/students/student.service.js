@@ -47,7 +47,9 @@ function notFoundError(message) {
 // Works out the current academic year using the common April-to-March
 // school year convention (so January-March still counts as part of the
 // academic year that started the previous April).
-function getCurrentAcademicYear(date = new Date()) {
+// Exported so other modules (like the dues-generation job) can ask "what
+// academic year is it right now?" without duplicating this logic.
+export function getCurrentAcademicYear(date = new Date()) {
   const year = date.getFullYear();
   const startYear = date.getMonth() < 3 ? year - 1 : year; // months 0,1,2 = Jan-Mar
   const endYearShort = String((startYear + 1) % 100).padStart(2, "0");

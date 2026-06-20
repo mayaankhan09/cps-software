@@ -125,3 +125,72 @@ export function updateStaffStatus(id, status) {
     body: JSON.stringify({ status }),
   });
 }
+
+// --- Fee Structures ---
+
+export function getFeeStructures(filters = {}) {
+  return request(`/api/fee-structures${toQueryString(filters)}`);
+}
+
+// Not in the original function-name list, but the backend has
+// GET /api/fee-structures/:id and the detail screen needs it — same
+// "one getter per item" pattern as every other module (getStudent,
+// getStaffById, getPayment, etc.).
+export function getFeeStructure(id) {
+  return request(`/api/fee-structures/${id}`);
+}
+
+export function createFeeStructure(data) {
+  return request("/api/fee-structures", { method: "POST", body: JSON.stringify(data) });
+}
+
+export function updateFeeStructure(id, data) {
+  return request(`/api/fee-structures/${id}`, { method: "PUT", body: JSON.stringify(data) });
+}
+
+export function setFeeStructureStatus(id, isActive) {
+  return request(`/api/fee-structures/${id}/status`, {
+    method: "PATCH",
+    body: JSON.stringify({ isActive }),
+  });
+}
+
+// --- Fee Dues ---
+
+export function generateDues(data) {
+  return request("/api/fee-dues/generate", { method: "POST", body: JSON.stringify(data) });
+}
+
+export function getUnpaidDues(filters = {}) {
+  return request(`/api/fee-dues/unpaid${toQueryString(filters)}`);
+}
+
+export function getPaidDues(filters = {}) {
+  return request(`/api/fee-dues/paid${toQueryString(filters)}`);
+}
+
+export function getOverdueDues() {
+  return request("/api/fee-dues/overdue");
+}
+
+export function getStudentDues(studentId) {
+  return request(`/api/fee-dues/student/${studentId}`);
+}
+
+// --- Payments ---
+
+export function recordPayment(data) {
+  return request("/api/payments", { method: "POST", body: JSON.stringify(data) });
+}
+
+export function getPayments(filters = {}) {
+  return request(`/api/payments${toQueryString(filters)}`);
+}
+
+export function getPayment(id) {
+  return request(`/api/payments/${id}`);
+}
+
+export function reversePayment(id, reason) {
+  return request(`/api/payments/${id}/reverse`, { method: "POST", body: JSON.stringify({ reason }) });
+}
