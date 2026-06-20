@@ -3,9 +3,14 @@
 // server.js. Keeping this separate makes the app easier to test later.
 
 import express from "express";
+import cors from "cors";
 import routes from "./routes/index.js";
 
 const app = express();
+
+// Allows the frontend (running on a different port during development) to
+// call this API. This is just dev-environment plumbing, not business logic.
+app.use(cors());
 
 // Lets Express understand JSON request bodies (e.g. from form submissions).
 app.use(express.json());
