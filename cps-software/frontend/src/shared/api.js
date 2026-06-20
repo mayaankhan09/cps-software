@@ -100,3 +100,28 @@ export function updateStudentStatus(id, status) {
     body: JSON.stringify({ status }),
   });
 }
+
+// --- Staff ---
+
+export function getStaff(filters = {}) {
+  return request(`/api/staff${toQueryString(filters)}`);
+}
+
+export function getStaffById(id) {
+  return request(`/api/staff/${id}`);
+}
+
+export function createStaff(data) {
+  return request("/api/staff", { method: "POST", body: JSON.stringify(omitBlankFields(data)) });
+}
+
+export function updateStaff(id, data) {
+  return request(`/api/staff/${id}`, { method: "PUT", body: JSON.stringify(omitBlankFields(data)) });
+}
+
+export function updateStaffStatus(id, status) {
+  return request(`/api/staff/${id}/status`, {
+    method: "PATCH",
+    body: JSON.stringify({ status }),
+  });
+}

@@ -26,6 +26,12 @@ export default function AdminLayout() {
         <NavLink to="/admin/students" style={navLinkStyle}>
           Students
         </NavLink>
+        <NavLink to="/admin/staff/new" style={navLinkStyle}>
+          New Staff
+        </NavLink>
+        <NavLink to="/admin/staff" style={navLinkStyle}>
+          Staff
+        </NavLink>
       </nav>
 
       <Outlet />
