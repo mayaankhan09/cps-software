@@ -6,6 +6,7 @@
 import { Router } from "express";
 import registrationRoutes from "../modules/registrations/registration.routes.js";
 import studentRoutes from "../modules/students/student.routes.js";
+import staffRoutes from "../modules/staff/staff.routes.js";
 
 const router = Router();
 
@@ -16,7 +17,8 @@ router.get("/health", (req, res) => {
 
 router.use("/registrations", registrationRoutes);
 router.use("/students", studentRoutes);
+router.use("/staff", staffRoutes);
 
-// Future module routes (staff, fees, attendance, etc.) get added here.
+// Future module routes (fees, attendance, etc.) get added here.
 
 export default router;

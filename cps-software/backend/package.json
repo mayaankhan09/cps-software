@@ -6,7 +6,8 @@
   "description": "Backend API for the School Management System",
   "main": "server.js",
   "scripts": {
-    "dev": "node --watch --env-file=../.env server.js"
+    "dev": "node --watch --env-file=../.env server.js",
+    "seed": "node --env-file=../.env seed.js"
   },
   "dependencies": {
     "express": "^5.2.1",
